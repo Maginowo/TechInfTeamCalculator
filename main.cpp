@@ -38,9 +38,9 @@ int main(int argc, char const *argv[]) {
         printf("%d - %d = %d\n", number1, number2, result);
         return 0;
     }
-else if(strcmp(argv[2],"sqrt")==0){
-    result = sqrt(number1);
-
-}
+    else if(strcmp(argv[2],"sqrt")==0){
+        result = sqrt(number1);
+        printf("sqrt %d = %d\n", number1, result);
+    }
     return 0;
 }
