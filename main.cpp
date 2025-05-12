@@ -19,6 +19,11 @@ int main(int argc, char const *argv[]) {
     result = number1 * number2;
         printf("%d * %d = %d \n",number1, number2, result);
     }
+    else if(strcmp(argv[2], "divide") == 0) {
+        result = number1 / number2;
+        printf("%d / %d = %d", number1, number2, result);
+    }
+
     if (strcmp(argv[2], "sub") == 0) {
         result = number1 - number2;
         printf("%d - %d = %d\n", number1, number2, result);
