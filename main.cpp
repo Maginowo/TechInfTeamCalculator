@@ -1,37 +1,92 @@
-#include <iostream>
-#include <string.h>
-#include <math.h>
+//#include <iostream>
+#include <stdio.h>
+#include "Stack.h"
 
-int main(int argc, char const *argv[]) {
-    int number1, number2, result;
+void menu(void)
+{
+    printf("\n");
+    printf("1 - poloz liczbe na stosie (Push)\n");
+    printf("2 - odczytaj wartosc ze szczytu stosu (Top)\n");
+    printf("3 - zdejmij liczbe ze stosu (Pop)\n");
+    printf("4 - sprawdz czy stos jest pusty\n");
+    printf("5 - sprawdz czy stos jest pelny\n");
+    printf("6 - koniec programu\n");
+    printf("\n");
+}
 
-    number1 = atoi(argv[1]);
-    number2 = atoi(argv[3]);
+int main()
+{
+    int temp = 0;
+    int option = 0;
+    printf("STOS - implementacja w tablicy statycznej\n");
+    while (1)
+    {
+        menu();
+        scanf("%d", &option);
 
-    if (strcmp(argv[2], "add") == 0) {
-        result = number1 + number2;
-        printf("%d + %d = %d\n", number1, number2, result);
+
+        switch (option)
+        {
+            case 1:
+                if ( !isStackFull() ){
+                    printf("Podaj wartosc: ");
+                    scanf("%d", &temp);
+                    Push(temp);
+                }
+                else {
+                    printf("operacja niedozwolona STOS pelny!!!\n\n");
+                }
+
+                break;
+
+            case 2:
+                if (!isStackEmpty()) {
+                    temp = Top();
+                    printf("Odczytana wartosc: %d", temp);
+                }
+                else {
+                    printf("operacja niedozwolona STOS pusty!!!\n\n");
+                }
+
+                break;
+
+            case 3:
+                if (!isStackEmpty()) {
+                    temp = Pop();
+                    printf("Odczytana wartosc: %d", temp);
+                }
+                else {
+                    printf("operacja niedozwolona STOS pusty!!!\n\n");
+                }
+                break;
+
+            case 4:
+                if (isStackEmpty()) {
+                    printf("STOS jest pusty.\n");
+                }
+                else {
+                    printf("STOS nie jest pusty.\n");
+                }
+                break;
+
+            case 5:
+                if (isStackFull()) {
+                    printf("STOS jest pelny.\n");
+                }
+                else {
+                    printf("STOS nie jest pelny.\n");
+                }
+                break;
+
+            case 6:
+                //zakonczenie programu
+                return 0;
+
+            default:
+                printf("Wybierz wlasciwa opcje.\n\n");
+                break;
+        }
     }
-    else if (strcmp(argv[2], "power") == 0) {
-        result = pow(number1, number2);
-        printf("%d ^ %d = %d\n", number1, number2, result);
-    }
-    else if(strcmp(argv[2],"mul") ==0){
-    result = number1 * number2;
-        printf("%d * %d = %d \n",number1, number2, result);
-    }
-    else if(strcmp(argv[2], "divide") == 0) {
-        result = number1 / number2;
-        printf("%d / %d = %d\n", number1, number2, result);
-    }
-    else if (strcmp(argv[2], "sub") == 0) {
-        result = number1 - number2;
-        printf("%d - %d = %d\n", number1, number2, result);
-        return 0;
-    }
-    else if(strcmp(argv[2],"sqrt")==0){
-        result = sqrt(number1);
-        printf("sqrt %d = %d\n", number1, result);
-    }
+
     return 0;
 }

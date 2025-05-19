@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.27)
-project(TeamCalculator255351)
+cmake_minimum_required(VERSION 3.22)
+project(MyStack)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 
-add_executable(TeamCalculator255351 main.cpp)
+add_executable(MyStack main.cpp Stack.cpp Stack.h)
